@@ -1,13 +1,30 @@
-let firstCard = 6   
-let secondCard = 9
-let cards = [firstCard,secondCard]//array ordered list of items
-let sum = firstCard + secondCard 
+
+let cards = []//array ordered list of items
+let sum = 0
 let messageEl = document.getElementById("message-el")
 //let sumEl = document.getElementById("sum-el")
 let sumEl = document.querySelector("#sum-el")
 let cardsEl= document.getElementById("cards-el")
 
+function getRandomCard(){
+    let randomNumber = Math.floor(Math.random()*13)+1
+   // return randomNumber
+
+    if(randomNumber>10){
+        return 10
+    } else if (randomNumber===1){
+        return 11
+    } else {
+        return randomNumber
+    }
+}
+
 function startGame(){
+    let firstCard = getRandomCard()   
+    let secondCard = getRandomCard()
+    cards = [firstCard,secondCard]
+    sum =firstCard + secondCard 
+
     renderGame()
 }
 
@@ -41,7 +58,7 @@ function renderGame(){
 function newCard (){
 
     console.log("draw a new card")
-    let card = 6
+    let card = getRandomCard()
     sum += card
     cards.push(card)
     
